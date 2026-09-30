@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+height: 100vh;
+margin: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+font-family: Arial, sans-serif;
+}
+ 
+#container {
+position: relative;
+width: 100vw;
+height: 100vh;
+}
+ 
+button {
+padding: 12px 24px;
+font-size: 18px;
+cursor: pointer;
+}
+ 
+#yesBtn {
+position: absolute;
+left: 45%;
+top: 50%;
+}
+ 
+#noBtn {
+position: absolute;
+left: 55%;
+top: 50%;
+}
+</style>
+</head>
+<body>
+ 
+<div id="container">
+<button id="yesBtn">Yes</button>
+<button id="noBtn">No</button>
+</div>
+ 
+<script>
+const noBtn = document.getElementById("noBtn");
+ 
+function moveButton() {
+const maxX = window.innerWidth - noBtn.offsetWidth;
+const maxY = window.innerHeight - noBtn.offsetHeight;
+ 
+const randomX = Math.random() * maxX;
+const randomY = Math.random() * maxY;
+ 
+noBtn.style.left = randomX + "px";
+noBtn.style.top = randomY + "px";
+}
+ 
+// Move when mouse gets close
+noBtn.addEventListener("mouseenter", moveButton);
+</script>
+ 
+</body>
+</html>
