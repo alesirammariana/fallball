@@ -1,6 +1,74 @@
 <!DOCTYPE html>
-<html>
-<body style="background:red;">
-<h1>TEST 123</h1>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposal: Fall Ball</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: #fff;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    overflow: hidden;
+  }
+  main { max-width: 560px; width: 100%; }
+  h1 { font-size: clamp(1.5rem, 5vw, 2.25rem); font-weight: 600; margin: 0 0 32px; }
+  .buttons { display: flex; gap: 16px; justify-content: center; }
+  button {
+    font: inherit; font-size: 1.1rem;
+    padding: 12px 36px; border: 1px solid #000; border-radius: 6px;
+    background: #fff; color: #000; cursor: pointer;
+  }
+  button:focus-visible { outline: 3px solid #000; outline-offset: 3px; }
+  #yes { background: #000; color: #fff; }
+  #no.dodge { position: fixed; transition: left .25s ease, top .25s ease; }
+  #result { display: none; }
+  #result img { max-width: 100%; max-height: 80vh; }
+  @media (prefers-reduced-motion: reduce) { #no.dodge { transition: none; } }
+</style>
+</head>
+<body>
+<main>
+  <section id="ask">
+    <h1>Proposal: Will you go to Fall Ball with me?</h1>
+    <div class="buttons">
+      <button id="yes">Yes</button>
+      <button id="no">No</button>
+    </div>
+  </section>
+  <section id="result">
+    <img src="yes.jpg" alt="Yes">
+  </section>
+</main>
+<script>
+  const yes = document.getElementById('yes');
+  const no = document.getElementById('no');
+
+  function dodge() {
+    const pad = 12;
+    const maxX = window.innerWidth - no.offsetWidth - pad;
+    const maxY = window.innerHeight - no.offsetHeight - pad;
+    no.classList.add('dodge');
+    no.style.left = Math.max(pad, Math.random() * maxX) + 'px';
+    no.style.top = Math.max(pad, Math.random() * maxY) + 'px';
+  }
+
+  ['mouseenter', 'pointerdown', 'touchstart', 'focus', 'click'].forEach(evt =>
+    no.addEventListener(evt, e => { e.preventDefault(); dodge(); })
+  );
+
+  yes.addEventListener('click', () => {
+    document.getElementById('ask').style.display = 'none';
+    no.style.display = 'none';
+    document.getElementById('result').style.display = 'block';
+  });
+</script>
 </body>
 </html>
