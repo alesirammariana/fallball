@@ -48,18 +48,15 @@ top: 50%;
 const noBtn = document.getElementById("noBtn");
  
 function moveButton() {
-const maxX = window.innerWidth - noBtn.offsetWidth;
-const maxY = window.innerHeight - noBtn.offsetHeight;
- 
-const randomX = Math.random() * maxX;
-const randomY = Math.random() * maxY;
+const randomX = Math.random() * (window.innerWidth - 120);
+const randomY = Math.random() * (window.innerHeight - 60);
  
 noBtn.style.left = randomX + "px";
 noBtn.style.top = randomY + "px";
 }
  
-// Move when mouse gets close
-noBtn.addEventListener("mouseenter", moveButton);
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("touchstart", moveButton);
 </script>
  
 </body>
