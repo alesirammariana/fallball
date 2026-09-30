@@ -39,6 +39,10 @@ top: 50%;
 </head>
 <body>
  
+<h1 style="position:absolute; top:30%; left:50%; transform:translateX(-50%);">
+Proposal: Go to fall ball with me?
+</h1>
+ 
 <div id="container">
 <button id="yesBtn">Yes</button>
 <button id="noBtn">No</button>
@@ -48,15 +52,14 @@ top: 50%;
 const noBtn = document.getElementById("noBtn");
  
 function moveButton() {
-const randomX = Math.random() * (window.innerWidth - 120);
-const randomY = Math.random() * (window.innerHeight - 60);
+const randomX = Math.random() * (window.innerWidth - 100);
+const randomY = Math.random() * (window.innerHeight - 50);
  
 noBtn.style.left = randomX + "px";
 noBtn.style.top = randomY + "px";
 }
  
 noBtn.addEventListener("mouseover", moveButton);
-noBtn.addEventListener("touchstart", moveButton);
 </script>
  
 </body>
