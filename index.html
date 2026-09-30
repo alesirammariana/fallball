@@ -49,17 +49,14 @@ Proposal: Go to fall ball with me?
 </div>
  
 <script>
+alert("JavaScript is working!");
+ 
 const noBtn = document.getElementById("noBtn");
  
-function moveButton() {
-const randomX = Math.random() * (window.innerWidth - 100);
-const randomY = Math.random() * (window.innerHeight - 50);
- 
-noBtn.style.left = randomX + "px";
-noBtn.style.top = randomY + "px";
-}
- 
-noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("mouseover", function () {
+noBtn.style.left = Math.random() * 800 + "px";
+noBtn.style.top = Math.random() * 500 + "px";
+});
 </script>
  
 </body>
